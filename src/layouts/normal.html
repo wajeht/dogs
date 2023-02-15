@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- head -->
+  <%- include('../components/head.html') %>
+
+  <!-- body -->
+
+  <body class="bg-black text-neutral-500 flex flex-col justify-between h-screen">
+    <!-- header -->
+    <div class="flex-0"><%- include('../components/header.html') %></div>
+
+    <main class="flex-1 p-5">
+      <div class="max-w-7xl mx-auto my-auto">
+        <!-- pages -->
+        <%- body %>
+      </div>
+    </main>
+
+    <!-- footer -->
+    <div class="flex-0"><%- include('../components/footer.html') %></div>
+  </body>
+</html>
