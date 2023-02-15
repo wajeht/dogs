@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  nginx:
+    container_name: nginx
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+        - 8080:80
+    volumes:
+        - ./src:/usr/share/nginx/html
+    command: /bin/sh -c "while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g 'daemon off;'"
