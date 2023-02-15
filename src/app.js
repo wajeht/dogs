@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import expressLayouts from 'express-ejs-layouts';
 import rateLimit from 'express-rate-limit';
 import compression from 'compression';
