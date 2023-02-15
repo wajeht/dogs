@@ -1,5 +1,5 @@
-<div class="grid grid-cols-4 gap-2">
+<div class="grid lg:grid-cols-4 sm:grid-cols-2 gap-5">
     <% for (let i = 0; i < images.length; i++) { %>
-        <img class="object-cover w-full h-full" src="<%= images[i] %>" alt="dog image">
+        <img class="object-cover w-full h-full rounded-md" src="<%= images[i] %>" alt="dog image">
     <% } %>
 </div>
