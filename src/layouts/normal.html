@@ -4,18 +4,19 @@
   <%- include('../components/head.html') %>
 
   <!-- body -->
-  <body class="bg-black text-neutral-500 flex flex-col h-screen">
+
+  <body class="bg-black text-neutral-500 flex flex-col justify-between h-screen">
     <!-- header -->
-    <%- include('../components/header.html') %>
+    <div class="flex-0"><%- include('../components/header.html') %></div>
 
     <main class="flex-1 p-5">
-      <div class="max-w-7xl mx-auto">
+      <div class="max-w-7xl mx-auto my-auto">
         <!-- pages -->
         <%- body %>
       </div>
     </main>
 
     <!-- footer -->
-    <%- include('../components/footer.html') %>
+    <div class="flex-0"><%- include('../components/footer.html') %></div>
   </body>
 </html>
