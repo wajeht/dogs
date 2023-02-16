@@ -28,7 +28,12 @@ app.use(
 app.use(cors());
 app.use(
   helmet({
-    contentSecurityPolicy: false,
+    contentSecurityPolicy: {
+      directives: {
+        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+        'script-src': ["'self'", "'unsafe-inline'", 'dogs.jaw.homes', 'localhost'],
+      },
+    },
   }),
 );
 app.use(compression());
