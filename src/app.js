@@ -16,14 +16,16 @@ dotenv.config(path.resolve(path.join(process.cwd(), '.env')));
 const PORT = process.env.PORT || 8080;
 const app = express();
 
-app.use(
-  rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 100,
-    standardHeaders: true,
-    legacyHeaders: false,
-  }),
-);
+if (['prod', 'production'].includes(process.env.ENV.toLowerCase())) {
+  app.use(
+    rateLimit({
+      windowMs: 15 * 60 * 1000,
+      max: 100,
+      standardHeaders: true,
+      legacyHeaders: false,
+    }),
+  );
+}
 
 app.use(cors());
 app.use(
