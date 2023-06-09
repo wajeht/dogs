@@ -9,7 +9,9 @@ function getImagePaths(folderPath) {
       if (err) {
         reject(err);
       } else {
-        const imagePaths = files.map((file) => path.join(folderPath.split('public')[1], file));
+        const imagePaths = files
+          .map((file) => path.join(folderPath.split('public')[1], file))
+          .filter((img) => img.split('.')[1] === 'jpg');
         resolve(imagePaths);
       }
     });
