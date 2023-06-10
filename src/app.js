@@ -9,7 +9,7 @@ import cors from 'cors';
 import path from 'path';
 import ejs from 'ejs';
 
-import routes, { notFoundHandler, errorHandler } from './routes.js';
+import routes, { notFoundHandler, errorHandler, rateLimitHandler } from './routes.js';
 
 dotenv.config(path.resolve(path.join(process.cwd(), '.env')));
 
@@ -23,6 +23,7 @@ if (['prod', 'production'].includes(process.env.ENV.toLowerCase())) {
       max: 100,
       standardHeaders: true,
       legacyHeaders: false,
+      message: rateLimitHandler,
     }),
   );
 }
