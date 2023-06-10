@@ -9,7 +9,7 @@ import cors from 'cors';
 import path from 'path';
 import ejs from 'ejs';
 
-import routes from './routes.js';
+import routes, { notFoundHandler, errorHandler } from './routes.js';
 
 dotenv.config(path.resolve(path.join(process.cwd(), '.env')));
 
@@ -56,7 +56,7 @@ app.set('layout', '../layouts/normal.html');
 app.use(expressLayouts);
 app.use(routes);
 
-app.use((req, res, nxt) => res.status(404).render('./not-found.html'));
-app.use((err, req, res, nxt) => res.status(500).render('./error.html'));
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`App was started on http://localhost:${PORT}`));
