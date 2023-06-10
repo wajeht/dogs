@@ -14,10 +14,6 @@ page.get('/', (req, res) => {
   });
 });
 
-page.get('/warning', (req, res) => {
-  return res.status(429).render('./rate-limit.html');
-});
-
 export function notFoundHandler(req, res, next) {
   const randomImage = images[Math.floor(Math.random() * images.length)];
   return res.status(404).render('./not-found.html', { randomImage });
