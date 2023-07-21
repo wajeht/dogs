@@ -34,7 +34,14 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-        'script-src': ["'self'", "'unsafe-inline'", 'dogs.jaw.homes', 'localhost', 'plausible.jaw.dev'],
+        'default-src': ["'self'", 'plausible.jaw.dev '],
+        'script-src': [
+          "'self'",
+          "'unsafe-inline'",
+          'dogs.jaw.homes',
+          'localhost',
+          'plausible.jaw.dev',
+        ],
       },
     },
   }),
