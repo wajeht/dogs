@@ -1,8 +1,8 @@
 {
-  "name": "dogs-jaw-homes",
+  "name": "dogs",
   "version": "0.0.1",
   "description": "dogs jaw homes",
-  "main": "app.js",
+  "main": "./src/app.js",
   "type": "module",
   "scripts": {
     "start": "node ./src/app.js",
@@ -36,7 +36,7 @@
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "html-minifier": "^4.0.0",
-    "nodemon": "^2.0.20",
+    "nodemon": "^3.0.1",
     "postcss": "^8.4.21",
     "prettier": "^2.8.4",
     "tailwindcss": "^3.2.6"
