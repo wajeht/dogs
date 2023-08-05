@@ -18,6 +18,10 @@ function getImagePaths(folderPath) {
   });
 }
 
-const images = await getImagePaths(dogsFolderPath);
+let images = [];
+
+if (!images.length) {
+  images = await getImagePaths(dogsFolderPath);
+}
 
 export default images;

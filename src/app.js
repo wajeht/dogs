@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import dotenv from 'dotenv';
 import expressLayouts from 'express-ejs-layouts';
 import rateLimit from 'express-rate-limit';
@@ -52,14 +51,15 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   express.static(path.resolve(path.join(process.cwd(), 'public')), {
-    maxAge: '24h',
+    // 1 year in miliseconds
+    maxAge: 31536000000,
   }),
 );
 
 app.engine('html', ejs.renderFile);
 app.set('view engine', 'html');
 app.set('views', path.resolve(path.join(process.cwd(), 'src', 'pages')));
-app.set('layout', '../layouts/normal.html');
+app.set('layout', path.resolve(path.join(process.cwd(), 'src', 'layouts', 'normal.html')));
 
 app.use(expressLayouts);
 app.use(routes);
