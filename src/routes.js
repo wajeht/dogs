@@ -5,7 +5,7 @@ import images from './utils/dogs-images.js';
 
 const page = express.Router();
 
-page.get('/health', (req, res) => {
+page.get('/health-check', (req, res) => {
   return res.status(200).json({ message: 'ok', date: new Date() });
 });
 
