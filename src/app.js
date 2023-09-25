@@ -37,7 +37,7 @@ app.use(
         'script-src': [
           "'self'",
           "'unsafe-inline'",
-          'dogs.jaw.homes',
+          'dogs.jaw.dev',
           'localhost',
           'plausible.jaw.dev',
         ],
