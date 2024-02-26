@@ -56,6 +56,9 @@ jobs:
     needs: [format, lint]
     name: Deploy to caprover
     runs-on: ubuntu-latest
+    environment:
+        name: production
+        url: https://snap.jaw.dev/
 
     strategy:
       matrix:
