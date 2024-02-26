@@ -11,7 +11,7 @@ function getImagePaths(folderPath) {
       } else {
         const imagePaths = files
           .map((file) => path.join(folderPath.split('public')[1], file))
-          .filter((img) => img.split('.')[1] === 'jpg');
+          .filter((img) => img.split('.')[1] === 'jpg' || img.split('.')[1] === 'jpeg');
         resolve(imagePaths);
       }
     });
