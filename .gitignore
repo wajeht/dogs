@@ -109,3 +109,4 @@ src/public/css/style.css
 mongo-volume
 mongo-init.js
 mongo-data
+/public/css/style.css
