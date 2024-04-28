@@ -6,7 +6,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 import path from 'path';
 import ejs from 'ejs';
-import "./utils/env.js";
+import './utils/env.js';
 
 import routes, { notFoundHandler, errorHandler, rateLimitHandler } from './routes.js';
 
