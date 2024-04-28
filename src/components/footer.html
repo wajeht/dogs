@@ -1,14 +1,16 @@
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const year = document.getElementById('year');
+    const currentYear = new Date().getFullYear();
+    year.innerText = currentYear;
+  });
+</script>
+
 <footer class="p-5 text-sm text-center">
   <span
     >Copyright © <span id="year"></span>. Made with ❤️ by
-    <a class="hover:text-slate-50" href="https://github.com/wajeht" target="_blank"
+    <a class="hover:text-slate-50" href="https://github.com/wajeht/dogs" target="_blank"
       >@wajeht ↗️</a
     ></span
   >
 </footer>
-
-<script>
-  const year = document.getElementById('year');
-  const currentYear = new Date().getFullYear();
-  year.innerText = currentYear;
-</script>

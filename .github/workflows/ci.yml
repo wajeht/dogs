@@ -61,7 +61,6 @@ jobs:
       name: production
       url: https://dogs.jaw.dev/
 
-
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
