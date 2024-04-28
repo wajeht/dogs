@@ -1,4 +1,3 @@
-import dotenv from 'dotenv';
 import expressLayouts from 'express-ejs-layouts';
 import rateLimit from 'express-rate-limit';
 import compression from 'compression';
@@ -7,13 +6,11 @@ import helmet from 'helmet';
 import cors from 'cors';
 import path from 'path';
 import ejs from 'ejs';
+import "./utils/env.js";
 
 import routes, { notFoundHandler, errorHandler, rateLimitHandler } from './routes.js';
 
-dotenv.config(path.resolve(path.join(process.cwd(), '.env')));
-
 const production = ['prod', 'production'];
-const PORT = process.env.PORT || 80;
 const app = express();
 
 if (production.includes(process.env.NODE_ENV.toLowerCase())) {
@@ -71,4 +68,4 @@ app.use(routes);
 app.use(notFoundHandler);
 app.use(errorHandler);
 
-app.listen(PORT, () => console.log(`App was started on http://localhost:${PORT}`));
+export { app };

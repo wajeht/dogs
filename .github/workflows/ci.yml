@@ -52,8 +52,30 @@ jobs:
       - name: Lint codes
         run: npm run lint
 
+  test:
+    name: Unit tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Test codes
+        run: npm run test
+
   deploy:
-    needs: [format, lint]
+    needs: [format, lint, test]
     name: Deploy to production
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
