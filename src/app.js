@@ -12,10 +12,11 @@ import routes, { notFoundHandler, errorHandler, rateLimitHandler } from './route
 
 dotenv.config(path.resolve(path.join(process.cwd(), '.env')));
 
-const PORT = process.env.PORT || 8080;
+const production = ['prod', 'production'];
+const PORT = process.env.PORT || 80;
 const app = express();
 
-if (['prod', 'production'].includes(process.env.ENV.toLowerCase())) {
+if (production.includes(process.env.NODE_ENV.toLowerCase())) {
   app.use(
     rateLimit({
       windowMs: 15 * 60 * 1000,
@@ -23,6 +24,9 @@ if (['prod', 'production'].includes(process.env.ENV.toLowerCase())) {
       standardHeaders: true,
       legacyHeaders: false,
       message: rateLimitHandler,
+      skip: () => {
+        return production.includes(process.env.NODE_ENV.toLowerCase());
+      },
     }),
   );
 }
@@ -51,7 +55,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   express.static(path.resolve(path.join(process.cwd(), 'public')), {
-    // 1 year in miliseconds
+    // 1 year in milliseconds
     maxAge: 31536000000,
   }),
 );

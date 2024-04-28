@@ -2,7 +2,7 @@ FROM node:alpine
 
 RUN apk --no-cache add curl
 
-ENV ENV production
+ENV NODE_ENV production
 
 WORKDIR /usr/src/app
 
@@ -14,8 +14,8 @@ COPY ./ ./
 RUN npm install
 RUN npm run build
 
-EXPOSE 8080
+EXPOSE 80
 
-HEALTHCHECK CMD curl -f http://localhost:8080/health-check || exit 1
+HEALTHCHECK CMD curl -f http://localhost:80/healthz || exit 1
 
 CMD ["npm", "run", "start"]
