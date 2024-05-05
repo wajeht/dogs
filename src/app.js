@@ -8,7 +8,7 @@ import path from 'path';
 import ejs from 'ejs';
 import './utils/env.js';
 
-import routes, { notFoundHandler, errorHandler, rateLimitHandler } from './routes.js';
+import routes, { notFoundHandler, errorHandler, rateLimitHandler, appVariablesHandler } from './routes.js';
 
 const production = ['prod', 'production'];
 const app = express();
@@ -62,6 +62,7 @@ app.set('view engine', 'html');
 app.set('views', path.resolve(path.join(process.cwd(), 'src', 'pages')));
 app.set('layout', path.resolve(path.join(process.cwd(), 'src', 'layouts', 'normal.html')));
 
+app.use(appVariablesHandler);
 app.use(expressLayouts);
 app.use(routes);
 

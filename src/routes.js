@@ -15,6 +15,13 @@ page.get('/', async (req, res) => {
   });
 });
 
+export async function appVariablesHandler(req, res, next) {
+  res.locals.app = {
+    copyrightYear: new Date().getFullYear(),
+  }
+  next();
+}
+
 export async function notFoundHandler(req, res, next) {
   const images = await loadImages();
   const randomImage = images[Math.floor(Math.random() * images.length)];
