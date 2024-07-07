@@ -4,7 +4,7 @@ import compression from 'compression';
 import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
-import path from 'path';
+import path from 'node:path';
 import ejs from 'ejs';
 import './utils/env.js';
 

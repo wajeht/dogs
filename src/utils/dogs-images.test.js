@@ -47,5 +47,18 @@ describe('loadImages', () => {
 
     const images = await loadImages();
     expect(images.length).toBe(2);
+    expect(images).toStrictEqual([
+      { path: '/img/dogs/dog1.jpg', name: 'dog1' },
+      { path: '/img/dogs/dog2.jpeg', name: 'dog2' },
+    ]);
+  });
+
+  it('should handle errors gracefully', async () => {
+    fs.readdir.mockImplementation((path, callback) => {
+      callback(new Error('Failed to read directory'), null);
+    });
+
+    const images = await loadImages();
+    expect(images).toEqual([]);
   });
 });

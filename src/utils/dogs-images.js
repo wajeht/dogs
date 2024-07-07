@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 
 export function getDogsFolderPath() {
   return path.resolve(path.join(process.cwd(), 'public', 'img', 'dogs'));
@@ -28,8 +28,10 @@ export function getImagePaths(folderPath) {
 export async function loadImages() {
   const folderPath = getDogsFolderPath();
   try {
-    const images = await getImagePaths(folderPath);
-    return images;
+    return (await getImagePaths(folderPath)).map((image) => ({
+      path: image,
+      name: path.basename(image, path.extname(image)),
+    }));
   } catch (error) {
     console.error('Failed to load images:', error);
     return [];
