@@ -18,7 +18,7 @@ describe('/', () => {
     const res = await app.get('/');
     expect(res.status).toBe(200);
     for (const image of await loadImages()) {
-      expect(res.text).includes(image);
+      expect(res.text).includes(image.path);
     }
   });
 });
