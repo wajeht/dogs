@@ -1,10 +1,17 @@
 <div class="grid lg:grid-cols-5 sm:grid-cols-2 gap-5">
   <% for (let i = 0; i < images.length; i++) { %>
-  <img
-    class="object-cover w-full h-full rounded-md"
-    src="<%= images[i].path %>"
-    alt="dog image"
-    loading="lazy"
-  />
+  <div class="relative group">
+    <img
+      class="object-cover w-full h-full rounded-md"
+      src="<%= images[i].path %>"
+      alt="dog image"
+      loading="lazy"
+    />
+    <div
+      class="absolute bottom-0 w-full h-full bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"
+    >
+      <span class="absolute bottom-5 w-full text-center"> <%= images[i].name %> </span>
+    </div>
+  </div>
   <% } %>
 </div>
