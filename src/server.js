@@ -1,5 +1,6 @@
 import './utils/env.js';
 import { app } from './app.js';
+
 const port = process.env.PORT || 80;
 
 const server = app.listen(port, async () => {
@@ -20,4 +21,5 @@ process.on('SIGTERM', gracefulShutdown);
 
 process.on('unhandledRejection', (reason, promise) => {
   console.log('Unhandled Rejection at: ', promise, ' reason: ', reason);
+  gracefulShutdown();
 });

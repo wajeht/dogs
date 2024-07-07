@@ -18,7 +18,7 @@ page.get('/', async (req, res) => {
 export async function appVariablesHandler(req, res, next) {
   res.locals.app = {
     copyrightYear: new Date().getFullYear(),
-  }
+  };
   next();
 }
 

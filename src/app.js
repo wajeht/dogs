@@ -8,25 +8,25 @@ import path from 'path';
 import ejs from 'ejs';
 import './utils/env.js';
 
-import routes, { notFoundHandler, errorHandler, rateLimitHandler, appVariablesHandler } from './routes.js';
+import routes, {
+  notFoundHandler,
+  errorHandler,
+  rateLimitHandler,
+  appVariablesHandler,
+} from './routes.js';
 
-const production = ['prod', 'production'];
 const app = express();
 
-if (production.includes(process.env.NODE_ENV.toLowerCase())) {
-  app.use(
-    rateLimit({
-      windowMs: 15 * 60 * 1000,
-      max: 100,
-      standardHeaders: true,
-      legacyHeaders: false,
-      message: rateLimitHandler,
-      skip: () => {
-        return production.includes(process.env.NODE_ENV.toLowerCase());
-      },
-    }),
-  );
-}
+app.use(
+  rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: rateLimitHandler,
+    skip: () => ['prod', 'production'].includes(process.env.NODE_ENV.toLowerCase()),
+  }),
+);
 
 app.use(cors());
 app.use(
@@ -50,12 +50,7 @@ app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(
-  express.static(path.resolve(path.join(process.cwd(), 'public')), {
-    // 1 year in milliseconds
-    maxAge: 31536000000,
-  }),
-);
+app.use(express.static(path.resolve(path.join(process.cwd(), 'public')), { maxAge: '30d' }));
 
 app.engine('html', ejs.renderFile);
 app.set('view engine', 'html');
