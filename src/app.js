@@ -50,7 +50,7 @@ app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(path.resolve(path.join(process.cwd(), 'public')), { maxAge: '30d' }));
+app.use(express.static(path.resolve(path.join(process.cwd(), 'public')), { maxAge: '90d' }));
 
 app.engine('html', ejs.renderFile);
 app.set('view engine', 'html');
